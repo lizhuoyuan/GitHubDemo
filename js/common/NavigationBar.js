@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import ScreenUtil from "../util/ScreenUtil";
+import {withNavigation} from 'react-navigation';
 
 const NAV_BAR_HEIGHT_ANDROID = 50;
 const NAV_BAR_HEIGHT_IOS = 44;
@@ -25,7 +26,8 @@ const StatusBarShape = {
     hidden: PropTypes.bool,
     backgroundColor: PropTypes.string,
 };
-export default class NavigationBar extends React.Component {
+
+class NavigationBar extends React.Component {
 
     static propTypes = {
         style: View.propTypes.style,
@@ -85,14 +87,16 @@ export default class NavigationBar extends React.Component {
 
     _renderLeft() {
 
-        console.log(this.props.navigation)
+        console.log(this.props.navigation);
         let {leftButton, leftTextStyle, showLeft, navigation} = this.props;
         if (!showLeft) {
             return null;
         }
         if (leftButton == null) {
             return (
-                <TouchableOpacity onPress={() => navigation.goBack()}>
+                <TouchableOpacity onPress={() => {
+                    navigation.goBack();
+                }}>
                     <View style={styles.leftContainer}>
                         <Text style={[styles.leftText, leftTextStyle]}>返回</Text>
                     </View>
@@ -150,3 +154,5 @@ const styles = StyleSheet.create({
         marginLeft: ScreenUtil.scaleSize(20)
     }
 });
+
+export default withNavigation(NavigationBar);

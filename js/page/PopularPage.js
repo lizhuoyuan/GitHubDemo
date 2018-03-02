@@ -52,7 +52,6 @@ export default class PopularPage extends React.Component {
     _renderNav() {
         return (
             <NavigationBar
-                navigation={this.props.navigation}
                 title={'Popular'}
                 style={{backgroundColor: 'green'}}
             />

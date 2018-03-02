@@ -24,6 +24,7 @@ export default class TrendingPage extends React.Component {
     }
 
     _renderNav() {
-        return (<NavigationBar/>)
+        return (
+            <NavigationBar/>)
     }
 }

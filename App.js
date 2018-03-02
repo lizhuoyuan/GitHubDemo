@@ -7,21 +7,20 @@
 import React from 'react';
 import {
     Platform,
-    StyleSheet,
     Text,
     View,
     Image,
     TouchableOpacity
 } from 'react-native';
 
-import {TabNavigator, StackNavigator} from 'react-navigation';
+import {TabNavigator, StackNavigator, SwitchNavigator} from 'react-navigation';
 
 import PopularPage from './js/page/PopularPage';
 import TrendingPage from './js/page/TrendingPage';
 import FavoritePage from './js/page/FavoritePage';
 import MyPage from './js/page/MyPage';
-import * as ScreenUtil from './js/util/ScreenUtil';
 import NewPage from './js/page/NewPage';
+import WelComePage from './js/page/WelcomePage';
 
 const Tab = TabNavigator({
         Popular: {
@@ -79,8 +78,14 @@ const Tab = TabNavigator({
     });
 
 const AppStackNavigator = StackNavigator({
-    Home: {
+    home: {
         screen: Tab,
+        navigationOptions: {
+            header: null
+        }
+    },
+    welcome: {
+        screen: WelComePage,
         navigationOptions: {
             header: null
         }
@@ -93,20 +98,17 @@ const AppStackNavigator = StackNavigator({
     }
 
 });
-const styles = StyleSheet.create({
-    rightView: {
-        marginHorizontal: 20
+
+//welcome为欢迎页
+export default SwitchNavigator(
+    {
+        welcome: WelComePage,
+        App: AppStackNavigator,
     },
-    headerView: {
-        backgroundColor: 'yellow',
-    },
-    headerTitleStyle: {
-        color: 'blue',
-        fontSize: 20,
-        alignSelf: 'center'
-    },
-    leftText: {
-        color: 'green'
+    {
+        initialRouteName: 'welcome',
     }
-});
-export default AppStackNavigator;
+);
+
+
+//export default AppStackNavigator;

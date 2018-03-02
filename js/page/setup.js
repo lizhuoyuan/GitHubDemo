@@ -7,6 +7,6 @@ import {
     SafeAreaView
 } from 'react-native';
 
-export function setup() {
+function setup() {
 
 }

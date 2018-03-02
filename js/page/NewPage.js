@@ -32,7 +32,6 @@ export default class NewPage extends React.Component {
     _renderNav() {
         return (
             <NavigationBar
-                navigation={this.props.navigation}
                 title={'NewP'}
             />
         )

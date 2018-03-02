@@ -6,13 +6,13 @@
 import React from 'react';
 import {
     View,
-    Image,
     Text,
-    SafeAreaView
+    SafeAreaView,
 } from 'react-native';
 import NavigationBar from '../common/NavigationBar';
-import HttpUtil from '../util/HttpUtil';
-import * as MyFetch from '../util/MyFetch';
+
+import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view';
+import PopularTab from '../common/PopularTab';
 
 export default class PopularPage extends React.Component {
 
@@ -21,20 +21,20 @@ export default class PopularPage extends React.Component {
         super(props);
         this.state = {
             tt: 'a',
-            data: {}
+            data: ''
         }
     }
 
     componentDidMount() {
-        this.load('http://10.22.218.162/cms/pages/relation/pageV1?id=AP1706A047')
+
     }
 
     render() {
         const {navigate} = this.props.navigation;
         return (
-            <SafeAreaView>
+            <SafeAreaView style={{flex: 1}}>
                 {this._renderNav()}
-                <Text onPress={() => {
+                {/*<Text onPress={() => {
                     navigate('NewPage', {
                         isVisible: true, showLeft: true, showRight: true, callback: data => {
                             this.setState({
@@ -43,8 +43,19 @@ export default class PopularPage extends React.Component {
                             console.log(this.state.tt)
                         }
                     },);
-                }}>{this.state.tt}</Text>
+                }}></Text>*/}
 
+                <ScrollableTabView
+                    tabBarTextStyle={{fontSize: 14}}
+                    tabBarUnderlineStyle={{backgroundColor: '#e7e7e7'}}
+                    tabBarActiveTextColor={'white'}
+                    tabBarInactiveTextColor={'mintcream'}
+                    tabBarBackgroundColor={'green'}
+                    renderTabBar={() => <ScrollableTabBar/>}>
+                    <PopularTab tabLabel="ios">ios</PopularTab>
+                    <PopularTab tabLabel="java">java</PopularTab>
+                    <PopularTab tabLabel="android">android</PopularTab>
+                </ScrollableTabView>
             </SafeAreaView>
         )
     }
@@ -52,33 +63,12 @@ export default class PopularPage extends React.Component {
     _renderNav() {
         return (
             <NavigationBar
+                showLeft={false}
                 title={'Popular'}
                 style={{backgroundColor: 'green'}}
             />
         )
     }
 
-    load(url) {
-        HttpUtil.get(url)
-            .then(result => {
-                this.setState({
-                    data: result
-                });
-                console.log(this.state.data)
-            })
-            .catch(error => {
-                this.setState({
-                    data: error
-                })
-            })
-    }
 
-    fetch(url) {
-        MyFetch.requestUrl(url, 'GET', '',
-            result => {
-                console.log(result);
-            }, error => {
-                console.log(error);
-            })
-    }
 }

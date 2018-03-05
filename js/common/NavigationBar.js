@@ -86,16 +86,18 @@ class NavigationBar extends React.Component {
     }
 
     _renderLeft() {
-
-        console.log(this.props.navigation);
-        let {leftButton, leftTextStyle, showLeft, navigation} = this.props;
+        let {leftButton, leftTextStyle, showLeft, navigation, onLeftClick} = this.props;
         if (!showLeft) {
             return null;
         }
         if (leftButton == null) {
             return (
                 <TouchableOpacity onPress={() => {
-                    navigation.goBack();
+                    if (onLeftClick) {
+                        onLeftClick();
+                    } else {
+                        navigation.goBack();
+                    }
                 }}>
                     <View style={styles.leftContainer}>
                         <Text style={[styles.leftText, leftTextStyle]}>返回</Text>
@@ -106,15 +108,21 @@ class NavigationBar extends React.Component {
     }
 
     _renderRight() {
-
-        let {rightButton, rightTextStyle, showRight} = this.props;
+        let {rightButton, rightTextStyle, showRight, onRightClick} = this.props;
         if (!showRight) {
             return null;
         }
         if (rightButton == null) {
-            return (<View>
-                <Text style={[styles.rightText, rightTextStyle]}>更多</Text>
-            </View>)
+            return (
+                <TouchableOpacity onPress={() => {
+                    if (onRightClick) {
+                        onRightClick()
+                    }
+                }}>
+                    <View>
+                        <Text style={[styles.rightText, rightTextStyle]}>更多</Text>
+                    </View>
+                </TouchableOpacity>)
         }
         return rightButton;
     }
@@ -122,7 +130,7 @@ class NavigationBar extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'grey'
+        backgroundColor: 'green'
     },
     content: {
         justifyContent: 'space-between',

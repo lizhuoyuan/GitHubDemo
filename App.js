@@ -21,6 +21,7 @@ import FavoritePage from './js/page/FavoritePage';
 import MyPage from './js/page/MyPage';
 import NewPage from './js/page/NewPage';
 import WelComePage from './js/page/WelcomePage';
+import CustomPage from "./js/page/CustomPage";
 
 const Tab = TabNavigator({
         Popular: {
@@ -95,8 +96,13 @@ const AppStackNavigator = StackNavigator({
         navigationOptions: {
             header: null
         }
+    },
+    customPage: {
+        screen: CustomPage,
+        navigationOptions: {
+            header: null
+        }
     }
-
 });
 
 //welcome为欢迎页

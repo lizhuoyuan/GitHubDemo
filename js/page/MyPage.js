@@ -5,16 +5,35 @@
 
 import React from 'react';
 import {
-    View
+    View,
+    TouchableOpacity,
+    Text,
+    SafeAreaView
 } from 'react-native';
+import NavigationBar from '../common/NavigationBar';
+import { NavigationActions } from 'react-navigation';
 
 export default class MyPage extends React.Component {
 
     render() {
         return (
-            <View>
+            <SafeAreaView>
+                {this._renderNav()}
+                <TouchableOpacity onPress={() => {
+                    this.props.navigation.navigate('customPage')
+                }}>
+                    <Text>去自定义标签</Text>
+                </TouchableOpacity>
+            </SafeAreaView>
+        )
+    }
 
-            </View>
+    _renderNav() {
+        return (
+            <NavigationBar
+                showLeft={false}
+                title={'MyPage'}
+            />
         )
     }
 }

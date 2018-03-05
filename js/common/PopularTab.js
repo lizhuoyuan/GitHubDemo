@@ -55,8 +55,7 @@ export default class PopularTab extends React.Component {
                     data: result.items,
                     isRefreshing: false
                 });
-
-            })
+             })
             .catch(error => {
                 this.setState({
                     isRefreshing: false,

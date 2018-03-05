@@ -21,7 +21,8 @@ export default class PopularPage extends React.Component {
         super(props);
         this.state = {
             tt: 'a',
-            data: ''
+            data: '',
+            checked: false
         }
     }
 
@@ -30,7 +31,6 @@ export default class PopularPage extends React.Component {
     }
 
     render() {
-        const {navigate} = this.props.navigation;
         return (
             <SafeAreaView style={{flex: 1}}>
                 {this._renderNav()}
@@ -44,7 +44,6 @@ export default class PopularPage extends React.Component {
                         }
                     },);
                 }}></Text>*/}
-
                 <ScrollableTabView
                     tabBarTextStyle={{fontSize: 14}}
                     tabBarUnderlineStyle={{backgroundColor: '#e7e7e7'}}

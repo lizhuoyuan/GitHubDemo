@@ -6,17 +6,38 @@
 import React from 'react';
 import {
     View,
-    SafeAreaView
+    SafeAreaView,
+    FlatList,
+    StyleSheet
 } from 'react-native';
 
 import NavigationBar from '../common/NavigationBar';
+import CheckBox from '../common/CheckBox';
+import ScreenUtil from "../util/ScreenUtil";
 
 export default class CustomPage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            checked: false,
+            data: [{title: 'ios'}, {title: 'andoid'}, {title: 'javascript'}],
+        }
+    }
+
     render() {
         return (
             <SafeAreaView>
                 {this._renderNav()}
-            </SafeAreaView>)
+                <FlatList
+                    keyExtractor={this._keyExtractor}
+                    data={this.state.data}
+                    renderItem={({item, index}) => <CheckBox item={item} index={index}/>}
+                    numColumns={2}
+                />
+
+            </SafeAreaView>
+        );
 
     }
 
@@ -25,4 +46,6 @@ export default class CustomPage extends React.Component {
             <NavigationBar title={'自定义标签'}/>
         )
     }
+
+    _keyExtractor = (item, index) => index + '';
 }

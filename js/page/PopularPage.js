@@ -52,8 +52,9 @@ export default class PopularPage extends React.Component {
                     tabBarBackgroundColor={'green'}
                     renderTabBar={() => <ScrollableTabBar/>}>
                     <PopularTab tabLabel="ios">ios</PopularTab>
-                    <PopularTab tabLabel="java">java</PopularTab>
                     <PopularTab tabLabel="android">android</PopularTab>
+                    <PopularTab tabLabel="java">java</PopularTab>
+
                 </ScrollableTabView>
             </SafeAreaView>
         )

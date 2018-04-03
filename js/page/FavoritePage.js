@@ -5,16 +5,37 @@
 
 import React from 'react';
 import {
-    View
+    View,
+    Text
 } from 'react-native';
 
+import WebView from '../common/WebView';
+
 export default class FavoritePage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            a: 22
+        }
+    }
 
     render() {
         return (
             <View>
+                <WebView
+                    onScrollChange={this.onWebViewScroll}
+                    url={"https://www.baidu.com"}
+                    style={{width: 200, height: 200}}/>
 
+                <Text onPress={() => this.setState(preState => {
+                    a: preState.a++
+                }, console.log(this.state.a))}>aaa</Text>
             </View>
         )
+    }
+
+    onWebViewScroll(event) {
+        console.log(event);
     }
 }

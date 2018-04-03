@@ -70,7 +70,6 @@ export default class PopularTab extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1
-
     },
     sepa: {
         width: ScreenUtil.screenW,

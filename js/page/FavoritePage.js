@@ -23,10 +23,7 @@ export default class FavoritePage extends React.Component {
     render() {
         return (
             <View>
-                <WebView
-                    onScrollChange={this.onWebViewScroll}
-                    url={"https://www.baidu.com"}
-                    style={{width: 200, height: 200}}/>
+
 
                 <Text onPress={() => this.setState(preState => {
                     a: preState.a++

@@ -13,6 +13,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+import Storage from './js/util/Storage';
 import {TabNavigator, StackNavigator, SwitchNavigator} from 'react-navigation';
 
 import PopularPage from './js/page/PopularPage';

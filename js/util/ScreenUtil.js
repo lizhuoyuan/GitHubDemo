@@ -289,6 +289,8 @@ export function removeAsyncStorage(key, successCallback, errorCallback) {
     })
 }
 
+
+
 export default class ScreenUtil {
     static screenW = screenW;
     static screenH = screenH;

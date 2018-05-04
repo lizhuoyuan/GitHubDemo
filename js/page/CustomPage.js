@@ -48,4 +48,8 @@ export default class CustomPage extends React.Component {
     }
 
     _keyExtractor = (item, index) => index + '';
+
+
 }
+
+

@@ -8,11 +8,19 @@ import {
     View,
     TouchableOpacity,
     Text,
-    SafeAreaView
+    SafeAreaView,
+    Modal,
+    Image
 } from 'react-native';
 import NavigationBar from '../common/NavigationBar';
-import { NavigationActions } from 'react-navigation';
 
+import {NavigationActions} from 'react-navigation';
+
+import APPState from '../mobx/AppState';
+
+import {observer} from 'mobx-react';
+
+@observer
 export default class MyPage extends React.Component {
 
     render() {
@@ -24,6 +32,12 @@ export default class MyPage extends React.Component {
                 }}>
                     <Text>去自定义标签</Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    APPState.changeTheme()
+                }}>
+                    <Text>修改主题</Text>
+                </TouchableOpacity>
+
             </SafeAreaView>
         )
     }
@@ -33,6 +47,9 @@ export default class MyPage extends React.Component {
             <NavigationBar
                 showLeft={false}
                 title={'MyPage'}
+                style={{
+                    backgroundColor: APPState.bgcolor
+                }}
             />
         )
     }

@@ -23,6 +23,8 @@ import MyPage from './js/page/MyPage';
 import NewPage from './js/page/NewPage';
 import WelComePage from './js/page/WelcomePage';
 import CustomPage from "./js/page/CustomPage";
+import APPState from './js/mobx/AppState';
+import {observer} from 'mobx-react';
 
 const Tab = TabNavigator({
         Popular: {
@@ -59,6 +61,7 @@ const Tab = TabNavigator({
             }
         }
     },
+
     {
         tabBarPosition: 'bottom',
         swipeEnabled: false,
@@ -67,7 +70,7 @@ const Tab = TabNavigator({
         initialRouteName: 'Popular',
         backBehavior: 'none',
         tabBarOptions: {
-            activeTintColor: 'blue',//label和icon的前景色 活跃状态下（选中）。
+            activeTintColor: APPState.bgcolor,//label和icon的前景色 活跃状态下（选中）。
             inactiveTintColor: 'gray',
             //activeBackgroundColor: 'green', //label和icon的背景色 活跃状态下（选中）
             //inactiveBackgroundColor: 'transparent',
@@ -75,7 +78,7 @@ const Tab = TabNavigator({
             labelStyle: {fontSize: 12}, //label的样式
             style: {height: 50, opacity: 0.5},  //tabbar的样式
 
-        }
+        },
 
     });
 
@@ -83,7 +86,7 @@ const AppStackNavigator = StackNavigator({
     home: {
         screen: Tab,
         navigationOptions: {
-            header: null
+            header: null,
         }
     },
     welcome: {
@@ -109,6 +112,7 @@ const AppStackNavigator = StackNavigator({
 //welcome为欢迎页
 export default SwitchNavigator(
     {
+
         welcome: WelComePage,
         App: AppStackNavigator,
     },

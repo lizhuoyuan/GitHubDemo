@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import NavigationBar from '../common/NavigationBar';
+import APPState from "../mobx/AppState";
 
 export default class TrendingPage extends React.Component {
 
@@ -29,6 +30,10 @@ export default class TrendingPage extends React.Component {
 
     _renderNav() {
         return (
-            <NavigationBar onLeftClick={() => this.click()}/>)
+            <NavigationBar
+                style={{
+                    backgroundColor: APPState.bgcolor
+                }}
+                onLeftClick={() => this.click()}/>)
     }
 }

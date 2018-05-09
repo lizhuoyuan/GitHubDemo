@@ -17,9 +17,8 @@ import PropTypes from 'prop-types';
 import ScreenUtil from "../util/ScreenUtil";
 import {withNavigation} from 'react-navigation';
 
-const NAV_BAR_HEIGHT_ANDROID = 50;
-const NAV_BAR_HEIGHT_IOS = 44;
-
+import APPState from '../mobx/AppState';
+import {observer} from 'mobx-react';
 
 const StatusBarShape = {
     barStyle: PropTypes.oneOf(['light-content', 'default', 'dark-content']),
@@ -27,6 +26,10 @@ const StatusBarShape = {
     backgroundColor: PropTypes.string,
 };
 
+const NAV_BAR_HEIGHT_ANDROID = 50;
+const NAV_BAR_HEIGHT_IOS = 44;
+
+@observer
 class NavigationBar extends React.Component {
 
     static propTypes = {
@@ -130,7 +133,7 @@ class NavigationBar extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'green'
+        backgroundColor: APPState.bgcolor
     },
     content: {
         justifyContent: 'space-between',

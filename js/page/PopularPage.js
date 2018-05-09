@@ -13,7 +13,10 @@ import NavigationBar from '../common/NavigationBar';
 
 import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view';
 import PopularTab from '../common/PopularTab';
+import APPState from "../mobx/AppState";
+import {observer} from 'mobx-react';
 
+@observer
 export default class PopularPage extends React.Component {
 
 
@@ -49,7 +52,7 @@ export default class PopularPage extends React.Component {
                     tabBarUnderlineStyle={{backgroundColor: '#e7e7e7'}}
                     tabBarActiveTextColor={'white'}
                     tabBarInactiveTextColor={'mintcream'}
-                    tabBarBackgroundColor={'green'}
+                    tabBarBackgroundColor={APPState.bgcolor}
                     renderTabBar={() => <ScrollableTabBar/>}>
                     <PopularTab tabLabel="ios">ios</PopularTab>
                     <PopularTab tabLabel="android">android</PopularTab>
@@ -65,7 +68,9 @@ export default class PopularPage extends React.Component {
             <NavigationBar
                 showLeft={false}
                 title={'Popular'}
-                style={{backgroundColor: 'green'}}
+                style={{
+                    backgroundColor: APPState.bgcolor
+                }}
             />
         )
     }

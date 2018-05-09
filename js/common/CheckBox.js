@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {Checkbox} from 'teaset';
 import * as ScreenUtil from "../util/ScreenUtil";
+import FavoritePage from "../page/FavoritePage";
 
 export default class CheckBox extends React.Component {
 
@@ -33,7 +34,7 @@ export default class CheckBox extends React.Component {
 
 
     }
-
+    
     render() {
         let {title} = this.props.item;
         return (
@@ -126,6 +127,6 @@ export default class CheckBox extends React.Component {
 const styles = StyleSheet.create({
     checkView: {
         width: ScreenUtil.screenW / 2,
-        padding: ScreenUtil.scaleSize(10)
+        padding: ScreenUtil.scaleSize(10),
     }
 });

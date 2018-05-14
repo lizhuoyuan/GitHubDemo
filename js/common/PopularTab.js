@@ -49,7 +49,7 @@ export default class PopularTab extends React.Component {
         this.setState({
             isRefreshing: true
         });
-        HttpUtil.get(url)
+        HttpUtil.get(url,true)
             .then(result => {
                 this.setState({
                     data: result.items,

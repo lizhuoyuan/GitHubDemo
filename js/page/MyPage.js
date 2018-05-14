@@ -9,7 +9,6 @@ import {
     TouchableOpacity,
     Text,
     SafeAreaView,
-    Modal,
     Image
 } from 'react-native';
 import NavigationBar from '../common/NavigationBar';

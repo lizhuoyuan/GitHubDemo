@@ -14,6 +14,7 @@ class AppState {
     @observable backIndex = 0;
     @observable backgroundColor = ['green', 'blue', 'red'];
     @observable bgcolor = 'green';
+    @observable showLoad = 0;
 
     constructor(props) {
 
@@ -59,6 +60,16 @@ class AppState {
     @action('改变主题颜色')
     changeTheme() {
         this.backIndex++
+    }
+
+    @action(' a')
+    hideLoading() {
+        this.showLoad = 0
+    }
+
+    @action('b')
+    showLoading() {
+        this.showLoad = 1
     }
 
 }

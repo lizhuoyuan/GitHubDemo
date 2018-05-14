@@ -24,7 +24,8 @@ import NewPage from './js/page/NewPage';
 import WelComePage from './js/page/WelcomePage';
 import CustomPage from "./js/page/CustomPage";
 import APPState from './js/mobx/AppState';
-import {observer} from 'mobx-react';
+import ScreenUtil from "./js/util/ScreenUtil";
+import Loading from './js/common/LoadingView';
 
 const Tab = TabNavigator({
         Popular: {
@@ -110,7 +111,7 @@ const AppStackNavigator = StackNavigator({
 });
 
 //welcome为欢迎页
-export default SwitchNavigator(
+const AppSwitchNavigator = SwitchNavigator(
     {
 
         welcome: WelComePage,
@@ -122,4 +123,15 @@ export default SwitchNavigator(
 );
 
 
+export default class AppClass extends React.Component {
+
+    render() {
+        return (
+            <View style={{flex: 1}}>
+                <AppSwitchNavigator/>
+                <Loading/>
+            </View>
+        )
+    }
+}
 //export default AppStackNavigator;
